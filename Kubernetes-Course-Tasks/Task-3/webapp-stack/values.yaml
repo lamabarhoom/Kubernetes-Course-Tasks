@@ -1,0 +1,28 @@
+app:
+  replicaCount: 2
+  image:
+    repository: webapp-api
+    tag: task3
+
+mysql:
+  write:
+    replicaCount: 1
+    image:
+      repository: webapp-mysql
+      tag: task3
+  read:
+    replicaCount: 2
+    image:
+      repository: webapp-mysql
+      tag: task3
+
+storage:
+  hostPath: /data/webapp-mysql
+  nodeName: session-1-m02
+  storageClassName: manual
+  pv:
+    size: 2Gi
+  pvc:
+    size: 2Gi
+
+taskIngressEnabled: true
